@@ -34,6 +34,7 @@
                 <td><?= $this->Number->format($movie->duration) ?></td>
                 <td><?= h($movie->created) ?></td>
                 <td><?= h($movie->modified) ?></td>
+                <td><?= h($movie->relase_date->format('d/m/Y')) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $movie->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $movie->id]) ?>
