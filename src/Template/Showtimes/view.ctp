@@ -50,3 +50,10 @@
         </tr>
     </table>
 </div>
+<div>
+    <?php
+        foreach($Showtimes as $values){
+            echo $values->movie_id;
+            }
+    ?>
+</div>
