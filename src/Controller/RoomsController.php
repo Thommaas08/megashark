@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\I18n\Time;
 /**
  * Rooms Controller
  *
@@ -39,7 +39,6 @@ class RoomsController extends AppController
             'contain' => ['Showtimes']
         ]);
         
-        $showtime = $this->Rooms->Showtimes->find()->where(['Showtimes.room_id' => $id])->contain(['Movies','Rooms']);
         $this->set('showtime', $showtime);
         $this->set('room', $room);
         $this->set('_serialize', ['room']);

@@ -44,32 +44,39 @@
         <?php if (!empty($room->showtimes)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Movie Id') ?></th>
-                <th scope="col"><?= __('Room Id') ?></th>
-                <th scope="col"><?= __('Start') ?></th>
-                <th scope="col"><?= __('End') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= __('Lundi') ?></th>
+                <th scope="col"><?= __('Mardi') ?></th>
+                <th scope="col"><?= __('Mercredi') ?></th>
+                <th scope="col"><?= __('Jeudi') ?></th>
+                <th scope="col"><?= __('Vendredi') ?></th>
+                <th scope="col"><?= __('Samedi') ?></th>
+                <th scope="col"><?= __('Dimanche') ?></th>
+               
             </tr>
-            <?php foreach ($room->showtimes as $showtimes): ?>
+        <?php for($i=1;$i<=7;$i++){?>
+        <td>
+        <table>
+            <?php foreach (showtimes as $showtime): ?>
             <tr>
-                <td><?= h($showtimes->id) ?></td>
-                <td><?= h($showtimes->movie_id) ?></td>
-                <td><?= h($showtimes->room_id) ?></td>
-                <td><?= h($showtimes->start) ?></td>
-                <td><?= h($showtimes->end) ?></td>
-                <td><?= h($showtimes->created) ?></td>
-                <td><?= h($showtimes->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Showtimes', 'action' => 'view', $showtimes->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Showtimes', 'action' => 'edit', $showtimes->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Showtimes', 'action' => 'delete', $showtimes->id], ['confirm' => __('Are you sure you want to delete # {0}?', $showtimes->id)]) ?>
-                </td>
-            </tr>
+            <?php
+                $test=($showtime->start)->format('N');
+                if($test==$i){?>
+                 <tr>
+                        <td>
+                            <?php echo h($showtime->movie->name);
+                            echo h($showtime->movie->duration);
+                            echo h($showtime->start);
+                            echo h($showtime->end);
+                             }
+                            ?>
+                        </td>
+                </tr>
             <?php endforeach; ?>
         </table>
+        </td>
+        <?php } ?>
         <?php endif; ?>
-    </div>
+    </table>
 </div>
+
+
